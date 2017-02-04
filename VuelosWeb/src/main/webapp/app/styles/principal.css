@@ -1,0 +1,12 @@
+.ng-scope{
+	background-image: url("https://assets-cdn.github.com/images/modules/site/personal-hero.jpg?sn");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+	height: 100% !important;
+    height: auto;
+    min-height: 660px;
+
+}

@@ -1,0 +1,18 @@
+{ 
+	"name": "webapp", 
+	"version": "1.0.0", 
+	"description": "server", 
+	"main": "server.js",
+	"scripts": { 
+		"test": "echo \"Error: no test specified\" && exit 1",
+		 "start2": "node server.js", 
+		 "start": "live-server --open=index.html --port=8082"
+	}, 
+	"author": "Yosimar Valega <yosimar.valega@techandsolve.com>", 
+	"license": "ISC", 
+	"dependencies": { 
+		"connect": "^3.4.1", "serve-static": "^1.11.1",
+		"live-server": "^1.1.0"
+	}
+	
+}

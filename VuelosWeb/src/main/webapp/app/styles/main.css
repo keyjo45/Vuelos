@@ -1,0 +1,35 @@
+.fondo{
+	background-color: #e7e7e7;
+}
+.color-anchor{
+	color: #464646;
+}
+
+.main-container {
+	float:left !important;
+	width: 100% !important;
+	height: 100% !important;
+	margin-top: auto;
+	margin: inherit;
+}
+
+.cuerpo{
+	min-height: 600px;
+	height: auto;
+	height: 100% !important;
+}
+
+.alineacion{
+		
+		 padding: 15em;
+}
+
+.titulo{
+	color: white;
+	text-align: center;
+	font-size: 4em;
+}
+
+.text-area{
+	resize:none;
+}

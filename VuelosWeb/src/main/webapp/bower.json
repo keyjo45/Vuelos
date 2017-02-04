@@ -1,0 +1,10 @@
+{
+  "name": "webapp",
+  "dependencies": {
+    "angular": "1.5.7",
+    "angular-route": "^1.5.7",
+    "bootstrap": "^3.3.6",
+    "sweetalert": "1.0.0",
+    "angular-local-storage": "^0.5.2"
+  }
+}

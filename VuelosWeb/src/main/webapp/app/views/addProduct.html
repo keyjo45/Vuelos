@@ -1,0 +1,38 @@
+<head>
+<meta charset="utf-8">
+</head>
+<div class="row">
+<div class="col-md-12"><br><br><br><br><br></div>
+<div class="col-md-4"></div>
+<div class="col-md-3">
+<h1 class="text-center">Producto a guardar</h1>
+<div ng-controller="productController">
+<form name="formproduct" novalidate>
+  <div class="form-group">
+    <label for="nombre">Nombre <b class="obligatorio"> * </b></label>
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre del Producto" ng-model="producto.nombre" ng-model-options="{ updateOn: 'blur' }" required="required" >
+    <span class="mensaje-error" ng-show="formproduct.$submitted || formproduct.nombre.$touched" ><span ng-show="!formproduct.$pristine && formproduct.nombre.$error.required">Debe proporcionar un valor para el nombre del Producto</span></span>
+  </div>
+  <div class="form-group">
+    <label for="apellidos">Descripción <b class="obligatorio"> * </b></label>
+    <textarea  class="form-control text-area" id="descripcion" maxlength="190" name="descripcion" placeholder="Detalle el Producto" rows="3" cols="10" ng-model="producto.descripcion" ng-model-options="{ updateOn: 'blur' }" required="required"></textarea>
+  	<span class="mensaje-error" ng-show="formproduct.$submitted || formproduct.descripcion.$touched"><span ng-show="!formproduct.$pristine && formproduct.descripcion.$error.required">Debe proporcionar un descripción para el Producto</span></span>
+  </div>
+  <div class="form-group">
+    <label for="apellidos">Cantidad <b class="obligatorio"> * </b></label>
+    <input type="number"  class="form-control" id="cantidad" name="cantidad" min="1"  max="1000000" onKeyPress="return soloNumeros(event)" maxlength="7" placeholder="Cantidad del Producto"  ng-model="producto.cantidad" ng-model-options="{ updateOn: 'blur' }" required="required">
+  	<span class="mensaje-error" ng-show="formproduct.$submitted || formproduct.cantidad.$touched"><span ng-show="!formproduct.$pristine && formproduct.cantidad.$error.required">Debe proporcionar una cantidad para el Producto</span></span>
+  </div>
+  <div class="form-group">
+    <label for="apellidos">Precio ($: Col) <b class="obligatorio"> * </b></label>
+    <input type="text"  class="form-control" id="precio" name="precio" pattern="^(\d|)?(\d|)*\.?\d*$" placeholder="Precio del Producto"  ng-model="producto.precio" ng-model-options="{ updateOn: 'blur' }" required="required" maxlength="8">
+  	<span class="mensaje-error" ng-show="formproduct.$submitted || formproduct.precio.$touched"><span ng-show="!formproduct.$pristine && formproduct.precio.$error.required">Debe proporcionar un precio para el Producto</span></span>
+  </div>
+   <div class="form-group text-center">
+    <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-success" ng-disabled="formproduct.$invalid" ng-style="disableElements"  ng-click="saveProduct(formproduct);">Guardar</button>
+  </div>
+  </form>
+</div>
+</div>
+<div class="col-md-5"></div>
+</div>

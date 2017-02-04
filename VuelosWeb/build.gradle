@@ -1,0 +1,83 @@
+buildscript {
+ 	repositories {
+ 		mavenCentral()
+ 		maven {
+ 			name = 'Sonatype Nexus Snapshots'
+ 			url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+ 		}
+ 	}
+ 	dependencies {
+ 		classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:1.1-SNAPSHOT'
+ 	}
+}
+
+apply plugin: 'war'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'liberty'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
+    compile group: 'javax', name: 'javaee-api', version: '7.0'
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+	compile project(':VuelosDomain')
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile 'info.cukes:cucumber-java:1.2.4'
+   	testCompile 'info.cukes:cucumber-junit:1.2.4'
+	testCompile 'org.seleniumhq.selenium:selenium-api:2.53.1'
+	testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:3.+'
+	testCompile 'org.seleniumhq.selenium:selenium-chrome-driver:3.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+     exclude 'com/co/techandsolve/tienda/feature/**'
+     exclude 'co/com/techandsolve/tienda/atdd/**'
+     
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+   reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+test {
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
+    }
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+
+war {
+	archiveName = appName
+	
+}
+
+liberty { 
+	installDir = 'C:/wlp' 
+	serverName = 'defaultServer' 
+	deploy { 
+	file = 'build/libs/' + appName
+	} 
+}

@@ -1,0 +1,36 @@
+<head>
+<meta charset="utf-8">
+</head>
+<section id="portfolio" ng-controller="reservaController">
+<div class="row main-container" ng-init="consultarReserva();">
+<div class="row">
+<h1 class="text-center lista">Mis Reservas </h1>
+</div>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<table class="table table-condensed" >
+<tr class="text-center">
+<td>ID-Reserva</td>
+<td>ID-Vuelo</td>
+<td>Fecha-Reserva</td>
+<td>ID-Cliente</td>
+</tr>
+<tr ng-repeat="reserva in reservas" class="active text-center">
+<td>{{reserva.id}}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+<div class="col-md-1"></div>
+</div>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+</div>
+<div class="col-md-1"></div>
+</div>
+</div>
+</section>
