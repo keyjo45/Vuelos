@@ -22,4 +22,9 @@ angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router'])
     	 templateUrl: 'app/views/consultarMisReservas.html',
          controller: 'reservaController'
     })
+     .state('registro', {
+    	 url:'/registro',
+    	 templateUrl: 'app/views/registro.html',
+         controller: 'usuarioController'
+    })
 });

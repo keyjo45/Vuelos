@@ -11,16 +11,28 @@
 <div class="col-md-10">
 <table class="table table-condensed" >
 <tr class="text-center">
-<td>ID-Reserva</td>
-<td>ID-Vuelo</td>
-<td>Fecha-Reserva</td>
-<td>ID-Cliente</td>
+<td>ID Reserva</td>
+<td>ID Vuelo</td>
+<td>Fecha de Reserva</td>
+<td>Fecha de Vuelo</td>
+<td>Hora de Vuelo</td>
+<td>Ciudad de Origen</td>
+<td>Ciudad de Destino</td>
+<td>Avión</td>
+<td>Valor Cancelado</td>
+<td>Estado del Vuelo</td>
 </tr>
 <tr ng-repeat="reserva in reservas" class="active text-center">
 <td>{{reserva.id}}</td>
-<td></td>
-<td></td>
-<td></td>
+<td>{{reserva.idVuelo}}</td>
+<td>{{reserva.fechaReserva | date :  "dd-MM-y"}}</td>
+<td>{{reserva.fechaVuelo | date : "dd-MM-y"}}</td>
+<td>{{reserva.fechaVuelo | date : "h:mm a"}}
+<td>{{reserva.origenVuelo}}</td>
+<td>{{reserva.destinoVuelo}}</td>
+<td>{{reserva.placaAvion}}</td>
+<td>{{reserva.tarifaVuelo | currency}}</td>
+<td>{{reserva.estadoVuelo}}</td>
 </tr>
 </table>
 </div>

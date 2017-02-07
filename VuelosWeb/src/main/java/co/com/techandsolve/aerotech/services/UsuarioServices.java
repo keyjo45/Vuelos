@@ -59,7 +59,7 @@ public class UsuarioServices {
 			String passwordEncript = Utilidades.generarCodificacion(password);
 			return securityBean.login(usuario, passwordEncript);
 		}catch (Exception e) {
-			throw new ValidacionException("Credenciales no validas");
+			throw new ValidacionException("Credenciales no validas "+e);
 		}
 		
 	}

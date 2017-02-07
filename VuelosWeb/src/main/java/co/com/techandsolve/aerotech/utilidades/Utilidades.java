@@ -7,19 +7,21 @@ import java.util.Date;
 
 import com.google.common.hash.Hashing;
 
+import co.com.techandsolve.aerotech.exception.ValidacionException;
+
 public class Utilidades {
 	
     public static String generarCodificacion(String password) {
     	return Hashing.sha256().hashString(password, Charset.defaultCharset()).toString();
     }
     
-    public  int calcularEdad(String fecha){
+    public  int calcularEdad(String fecha) throws ValidacionException{
         Date fechaNacimientoUsuario=null;
             try {
               
             	fechaNacimientoUsuario = new SimpleDateFormat("dd-MM-yyyy").parse(fecha);
             } catch (Exception ex) {
-                ex.getMessage();
+                throw new ValidacionException("Formato noi valido "+ex);
             }
             Calendar fechaNacimiento = Calendar.getInstance();
             Calendar fechaActual = Calendar.getInstance();
