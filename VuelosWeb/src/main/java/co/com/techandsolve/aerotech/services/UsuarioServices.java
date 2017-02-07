@@ -28,25 +28,22 @@ public class UsuarioServices {
 	@Inject
 	SecurityBean securityBean;
 	
-	
-	private List<Usuario> listUsuario=new ArrayList<>();
-	
 	@PUT
 	@Path("/saveUsuario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addClient(@Valid Usuario usuario) throws ValidacionException {
 		
+		List<Usuario> listUsuario = new ArrayList<>();
 		String password = Utilidades.generarCodificacion(usuario.getPassword());
 		usuario.setPassword(password);
-		
-		listUsuario=usuarioDao.consultarUsuario(usuario);
-		
-		if(listUsuario.isEmpty()){
+		listUsuario = usuarioDao.consultarUsuario(usuario);
+
+		if (listUsuario.isEmpty()) {
 			usuarioDao.crearUsuario(usuario);
-		}else{
-			throw new ValidacionException ("Usuario creado anteriormente: Ya existe un usuario para la identificación: "+usuario.getId()+", el email: "+usuario.getEmail()+" y password");
+		} else {
+			throw new ValidacionException("Usuario creado anteriormente: Ya existe un usuario para la identificación: "
+					+ usuario.getId() + ", el email: " + usuario.getEmail() + " y password");
 		}
-		
 	}
 	
 	@POST
@@ -61,7 +58,5 @@ public class UsuarioServices {
 		}catch (Exception e) {
 			throw new ValidacionException("Credenciales no validas "+e);
 		}
-		
 	}
-
 }
