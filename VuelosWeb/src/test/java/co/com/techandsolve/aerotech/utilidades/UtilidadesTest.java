@@ -5,11 +5,13 @@ import java.text.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import co.com.techandsolve.aerotech.exception.ValidacionException;
+
 
 public class UtilidadesTest {
 	
 	@Test
-	public void debeCalcularEdaddeUsuario() throws ParseException{
+	public void debeCalcularEdaddeUsuario() throws ParseException, ValidacionException{
 		
 		String fechaNacimiento ="13-11-1986";
 		
