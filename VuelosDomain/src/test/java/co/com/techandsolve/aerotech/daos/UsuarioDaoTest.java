@@ -63,6 +63,7 @@ public class UsuarioDaoTest {
 		
 	}
 	
+	@Test
 	public void debeConsultarUsuarioPorEmailYPassword(){
 
 		List<Usuario> listUsuarioObtenido =new ArrayList<Usuario>();
