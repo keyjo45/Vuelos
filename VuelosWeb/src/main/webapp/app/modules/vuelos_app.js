@@ -22,6 +22,16 @@ angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router'])
     	 templateUrl: 'app/views/consultarMisReservas.html',
          controller: 'reservaController'
     })
+     .state('home.tarifa', {
+    	 url:'/tarifa',
+    	 templateUrl: 'app/views/consultarTarifa.html',
+         controller: 'vuelosController'
+    })
+     .state('home.estado', {
+    	 url:'/estado',
+    	 templateUrl: 'app/views/consultarEstado.html',
+         controller: 'vuelosController'
+    })
      .state('registro', {
     	 url:'/registro',
     	 templateUrl: 'app/views/registro.html',

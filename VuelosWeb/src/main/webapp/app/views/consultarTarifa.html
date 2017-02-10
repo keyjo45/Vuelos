@@ -1,0 +1,77 @@
+<head>
+<meta charset="utf-8">
+</head>
+<section>
+	<div class="row main-container">
+		<div class="row">
+			<h1 class="text-center lista">Tarifas</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="origen">Ciudad de Origen <b
+							class="obligatorio"> * </b></label> <select class="form-control"
+							id="origen" name="origen" autofocus required
+							ng-model="ciudadOrigen">
+							<option value="BARRANQUILLA">BARRANQUILLA</option>
+							<option value="BOGOTÁ">BOGOTÁ</option>
+							<option value="CALÍ">CALÍ</option>
+							<option value="MEDELLIN">MEDELLIN</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="destino">Ciudad de Destino <b
+							class="obligatorio"> * </b></label> <select class="form-control"
+							id="destino" name="destino" ng-model="ciudadDestino" required>
+							<option value="BARRANQUILLA">BARRANQUILLA</option>
+							<option value="BOGOTÁ">BOGOTÁ</option>
+							<option value="CALÍ">CALÍ</option>
+							<option value="MEDELLIN">MEDELLIN</option>
+						</select>
+					</div>
+					<button type="button" class="btn btn-primary"
+						ng-click="buscarVuelosSegunTarifa();">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<br> <br>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<table class="table table-condensed">
+					<tr class="text-center">
+						<td>Aerolinea</td>
+						<td>Vuelo</td>
+						<td>Avion</td>
+						<td>Fecha de Vuelo</td>
+						<td>Hora de Vuelo</td>
+						<td>Ciudad de Origen</td>
+						<td>Ciudad de Destino</td>
+						<td>Precio</td>
+						<td>Cantidad de Silla</td>
+						<td>Estado del Vuelo</td>
+					</tr>
+					<tr ng-repeat="vuelo in vuelos" class="active text-center">
+						<td>{{vuelo.nombreAerolinea}}</td>
+						<td>{{vuelo.id}}</td>
+						<td>{{vuelo.placa}}</td>
+						<td>{{vuelo.fecha | date : "dd-MM-y"}}</td>
+						<td>{{vuelo.fecha | date : "h:mm a"}}
+						<td>{{vuelo.origen}}</td>
+						<td>{{vuelo.destino}}</td>
+						<td>{{vuelo.tarifa | currency}}</td>
+						<td>{{vuelo.cantidadSilla}}</td>
+						<td>{{vuelo.estado}}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+</section>

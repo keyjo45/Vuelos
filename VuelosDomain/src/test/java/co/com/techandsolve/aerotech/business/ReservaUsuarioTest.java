@@ -17,42 +17,41 @@ import co.com.techandsolve.aerotech.models.Reserva;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReservaUsuarioTest {
-	
+
 	@InjectMocks
 	private ReservaUsuario reservaUsuarioReserva;
-	
+
 	@Mock
 	private ReservaDao reservaDao;
-	
+
 	@Mock
 	private ReservaClientes reservaClientes;
-	
+
 	@Mock
 	private List<Reserva> listReservaActual;
-	
+
 	@Mock
 	private List<ReservaCliente> listReservaClienteActual;
-	
-	
-	
+
 	@Test
-	public void debeConsultarReservaPorIdCliente(){
-		
-		long idCliente=1129572970;
-		
-		List<ReservaCliente> listReservaClienteObtenida=new ArrayList<ReservaCliente>();
-		
+	public void debeConsultarReservaPorIdCliente() {
+
+		long idCliente = 1129572970;
+
+		List<ReservaCliente> listReservaClienteObtenida = new ArrayList<ReservaCliente>();
+
 		Mockito.when(reservaDao.consultarReservaPorIdUsuario(idCliente)).thenReturn(listReservaActual);
-		
-		Mockito.when(reservaClientes.adiccionarListaReservaCliente(listReservaActual)).thenReturn(listReservaClienteActual);
-		
-		listReservaClienteObtenida=reservaUsuarioReserva.consultarReservaPorIdCliente(idCliente);
-		
-		//assert
+
+		Mockito.when(reservaClientes.adiccionarListaReservaCliente(listReservaActual))
+				.thenReturn(listReservaClienteActual);
+
+		listReservaClienteObtenida = reservaUsuarioReserva.consultarReservaPorIdCliente(idCliente);
+
+		// assert
 		Mockito.verify(reservaDao).consultarReservaPorIdUsuario(idCliente);
 		Mockito.verify(reservaClientes).adiccionarListaReservaCliente(listReservaActual);
 		Assert.assertEquals(listReservaClienteObtenida, listReservaClienteActual);
-		
+
 	}
 
 }

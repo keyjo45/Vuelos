@@ -11,40 +11,46 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="vuelo")
+@Table(name = "vuelo")
+@NamedQueries({
+		@NamedQuery(name = Vuelo.BY_CITY, query = "select vuelo from Vuelo vuelo JOIN FETCH vuelo.idAvion where vuelo.origen like :origen AND vuelo.destino like :destino"),
+		@NamedQuery(name = Vuelo.BY_ID, query = "select vuelo from Vuelo vuelo JOIN FETCH vuelo.idAvion where vuelo.id like :id") })
 public class Vuelo {
-	
-	@Id
-	@Column(name="id")
-	private String id;
-	
-	@Column(name="fecha")
-	private Date fecha;
-	
-	@Column(name="origen")
-	private String origen;
-	
-	@Column(name="destino")
-	private String destino;
-	
-	@Column(name="tarifa")
-	private double tarifa;
-	
-	@Column(name="estado")
-	private String estado;
-	
 
-	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="idAvion", referencedColumnName="id")
+	public static final String BY_CITY = "Busquedad de Vuelos por Ciudades";
+	public static final String BY_ID = "Busquedad de Vuelos por ID";
+
+	@Id
+	@Column(name = "id")
+	private String id;
+
+	@Column(name = "fecha")
+	private Date fecha;
+
+	@Column(name = "origen")
+	private String origen;
+
+	@Column(name = "destino")
+	private String destino;
+
+	@Column(name = "tarifa")
+	private double tarifa;
+
+	@Column(name = "estado")
+	private String estado;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idAvion", referencedColumnName = "id")
 	private Avion idAvion;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idVuelo" , cascade = CascadeType.ALL)
-	private List<Reserva> reservas=new ArrayList<Reserva>();
-	
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idVuelo", cascade = CascadeType.ALL)
+	private List<Reserva> reservas = new ArrayList<>();
 
 	public List<Reserva> getReservas() {
 		return reservas;
@@ -101,7 +107,7 @@ public class Vuelo {
 	public void setIdAvion(Avion idAvion) {
 		this.idAvion = idAvion;
 	}
-	
+
 	public String getEstado() {
 		return estado;
 	}

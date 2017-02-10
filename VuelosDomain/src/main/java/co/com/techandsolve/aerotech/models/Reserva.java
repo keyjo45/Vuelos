@@ -11,10 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="reserva")
+@NamedQueries({
+	@NamedQuery(name=Reserva.BY_ID_USUARIO, query=" SELECT r FROM Reserva r JOIN FETCH r.idVuelo JOIN FETCH r.idUsuario usuario WHERE usuario.id=:id ")
+})
 public class Reserva {
 	
 	public static final String BY_ID_USUARIO="RESERVA_BY_ID_USUARIO";

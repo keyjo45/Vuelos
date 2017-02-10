@@ -18,11 +18,7 @@ public class ReservaUsuario {
 	
 	public List<ReservaCliente> consultarReservaPorIdCliente(long id){
 		
-		List<ReservaCliente> listReservaCliente=new ArrayList<ReservaCliente>();
-		
-		listReservaCliente=reservaClientes.adiccionarListaReservaCliente(reservaDao.consultarReservaPorIdUsuario(id));
-		
-		return listReservaCliente;
+		 return reservaClientes.adiccionarListaReservaCliente(reservaDao.consultarReservaPorIdUsuario(id));
 		
 	}	
 

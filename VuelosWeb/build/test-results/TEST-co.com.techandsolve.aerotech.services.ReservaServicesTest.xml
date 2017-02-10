@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.techandsolve.aerotech.services.ReservaServicesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-02-07T16:22:50" hostname="yosimarvalega" time="0.094">
-  <properties/>
-  <testcase name="debeLlamarConsultarReserva" classname="co.com.techandsolve.aerotech.services.ReservaServicesTest" time="0.094"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

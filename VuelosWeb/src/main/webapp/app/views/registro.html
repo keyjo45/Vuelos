@@ -10,7 +10,7 @@
 <form name="formusuario" novalidate>
   <div class="form-group">
     <label for="nombres">Nombres <b class="obligatorio"> * </b></label>
-    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Escriba sus nombres " ng-model="usuario.nombres" ng-model-options="{ updateOn: 'blur' }" required="required" >
+    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Escriba sus nombres " ng-model="usuario.nombres" ng-model-options="{ updateOn: 'blur' }" autofocus required="required" >
     <span class="mensaje-error" ng-show="formusuario.$submitted || formusuario.nombres.$touched" ><span ng-show="!formusuario.$pristine && formusuario.nombres.$error.required">Debe proporcionar un valor para el campo nombres</span></span>
   </div>
    <div class="form-group">

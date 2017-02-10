@@ -1,2 +1,2 @@
 include ':VuelosDomain',':VuelosWeb'
-rootProject.name='VuelosWeb'
+rootProject.name='Vuelos'

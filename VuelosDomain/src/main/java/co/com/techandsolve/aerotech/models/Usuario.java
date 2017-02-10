@@ -1,11 +1,8 @@
 package co.com.techandsolve.aerotech.models;
 
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +23,8 @@ import javax.persistence.Transient;
 })
 public class Usuario {
 	
-	public final static String USUARIO_ENCONTRADO="USER_FIND"; 
-	public final static String BY_EMAIL_PASSWORD="USER_FIND_BY_EMAIL_PASSWORD";
+	public static final String USUARIO_ENCONTRADO="USER_FIND"; 
+	public static  final  String BY_EMAIL_PASSWORD="USER_FIND_BY_EMAIL_PASSWORD";
 	
 	@Id
 	@Column(name="id")
@@ -58,7 +55,7 @@ public class Usuario {
 	private String token;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="idUsuario" , cascade = CascadeType.ALL)
-	private List<Reserva> reservas=new ArrayList<Reserva>();
+	private List<Reserva> reservas=new ArrayList<>();
 	
 
 	public Usuario(){

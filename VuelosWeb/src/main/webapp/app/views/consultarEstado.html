@@ -1,0 +1,28 @@
+<head>
+<meta charset="utf-8">
+</head>
+<section>
+	<div class="row main-container">
+		<div class="row">
+			<h1 class="text-center lista">ESTADO DEL VUELO</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="destino">Referencia del Vuelo <b
+							class="obligatorio"> * </b></label>
+							<input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ejemplo: FKY1**" ng-model="vuelo.id" autofocus required="required" >
+					</div>
+					<button type="button" class="btn btn-primary"
+						ng-click="buscarVuelosSegunEstado();">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<br> <br>
+		</div>
+	</div>
+</section>

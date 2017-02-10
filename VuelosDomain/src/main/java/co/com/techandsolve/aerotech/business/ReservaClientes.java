@@ -10,11 +10,10 @@ public class ReservaClientes {
 	
 	public List<ReservaCliente> adiccionarListaReservaCliente(List<Reserva> listReserva){
 		
-		List<ReservaCliente> listReservas =new ArrayList<>();
-		
-		listReserva.stream()
-				.forEach((obj) -> listReservas.add(new ReservaCliente(obj)));
-		
+		List<ReservaCliente> listReservas = new ArrayList<>();
+
+		listReserva.forEach(obj -> listReservas.add(new ReservaCliente(obj)));
+
 		return listReservas;
 	}
 

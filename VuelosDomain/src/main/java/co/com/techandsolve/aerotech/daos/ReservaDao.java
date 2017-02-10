@@ -20,7 +20,7 @@ public class ReservaDao {
 		Usuario usuario=new Usuario();
 		usuario.setId(idUsuario);
 	
-		return em.createQuery(" SELECT r FROM Reserva r JOIN FETCH r.idVuelo JOIN FETCH r.idUsuario usuario WHERE usuario.id=:id ", Reserva.class)
+		return em.createNamedQuery(Reserva.BY_ID_USUARIO, Reserva.class)
 		.setParameter("id",  usuario.getId()).getResultList();
 		
 	}
