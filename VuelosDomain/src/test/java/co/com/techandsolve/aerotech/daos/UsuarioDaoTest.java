@@ -5,11 +5,13 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -38,8 +40,16 @@ public class UsuarioDaoTest {
 	public void debeCrearUsuario(){
 		
 		Usuario usuarioCreado = new Usuario();
-		usuarioDao.crearUsuario(usuarioCreado);;
+		usuarioCreado.setId(123);
+		usuarioCreado.setApellidos("VALEGA");
+		usuarioCreado.setFechaNacimiento(new Date());
+		usuarioCreado.setGenero("F");
+		usuarioCreado.setNombres("YOSIMAR ENRIQUE");
+		usuarioCreado.setPassword("123");
+		usuarioCreado.setTelefono(3230321);
+		usuarioDao.crearUsuario(usuarioCreado);
 		verify(em).persist(usuarioCreado);
+		Assert.assertEquals("YOSIMAR ENRIQUE", usuarioCreado.getNombres());
 	}
 	
 	@Test

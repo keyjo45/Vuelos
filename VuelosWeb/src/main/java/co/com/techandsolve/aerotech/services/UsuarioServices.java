@@ -33,10 +33,9 @@ public class UsuarioServices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addClient(@Valid Usuario usuario) throws ValidacionException {
 		
-		List<Usuario> listUsuario = new ArrayList<>();
 		String password = Utilidades.generarCodificacion(usuario.getPassword());
 		usuario.setPassword(password);
-		listUsuario = usuarioDao.consultarUsuario(usuario);
+		List<Usuario> listUsuario = usuarioDao.consultarUsuario(usuario);
 
 		if (listUsuario.isEmpty()) {
 			usuarioDao.crearUsuario(usuario);
