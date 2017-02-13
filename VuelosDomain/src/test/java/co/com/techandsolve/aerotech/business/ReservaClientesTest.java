@@ -20,7 +20,6 @@ public class ReservaClientesTest {
 		
 		ReservaClientes reservaClientes=new ReservaClientes();
 		List<ReservaCliente> listReservasObtenida=new ArrayList<ReservaCliente>();
-		List<Reserva> listReservaVuelo= new ArrayList<Reserva>();
 		List<Reserva> listReserva= new ArrayList<Reserva>();
 		Reserva reserva=new Reserva();
 		Vuelo vuelo=new Vuelo();
@@ -29,7 +28,6 @@ public class ReservaClientesTest {
 		vuelo.setId("FKY123");
 		vuelo.setIdAvion(new Avion());
 		vuelo.setOrigen("MEDELLIN");
-		vuelo.setReservas(listReservaVuelo);
 		vuelo.setTarifa(60000);
 		vuelo.setDestino("Barranquilla");
 		vuelo.setEstado("Disponible");
