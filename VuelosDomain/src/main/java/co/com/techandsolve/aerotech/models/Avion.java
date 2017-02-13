@@ -31,18 +31,6 @@ public class Avion {
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="idAerolinea", referencedColumnName="id")
 	private Aerolinea idAerolinea;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idAvion" , cascade = CascadeType.ALL)
-	private List<Vuelo> vuelos=new ArrayList<Vuelo>();
-
-	
-	public List<Vuelo> getVuelos() {
-		return vuelos;
-	}
-
-	public void setVuelos(List<Vuelo> vuelos) {
-		this.vuelos = vuelos;
-	}
 
 	public Avion(){
 		

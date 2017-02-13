@@ -25,9 +25,6 @@ public class Aerolinea {
 	@Column(name="nombre")
 	private String nombre;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idAerolinea" , cascade = CascadeType.ALL)
-	private List<Avion> aviones=new ArrayList<Avion>();
-	
 	 
 
 	public Aerolinea(){
@@ -48,14 +45,6 @@ public class Aerolinea {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	
-	public List<Avion> getAviones() {
-		return aviones;
-	}
-
-	public void setAviones(List<Avion> aviones) {
-		this.aviones = aviones;
 	}
 	
 }

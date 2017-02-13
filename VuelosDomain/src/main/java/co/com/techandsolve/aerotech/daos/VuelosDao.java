@@ -18,11 +18,9 @@ public class VuelosDao {
 		return em.createNamedQuery(Vuelo.BY_CITY, Vuelo.class).setParameter("origen", ciudadOrigen)
 				.setParameter("destino", ciudadDestino).getResultList();
 	}
-	
-	public Vuelo consultarVueloPorID(String id){
-		
-		return em.createNamedQuery(Vuelo.BY_ID, Vuelo.class).setParameter("id", id)
-				.getSingleResult();
-	}
 
+	public Vuelo consultarVueloPorID(String id) {
+
+		return em.createNamedQuery(Vuelo.BY_ID, Vuelo.class).setParameter("id", id).getSingleResult();
+	}
 }

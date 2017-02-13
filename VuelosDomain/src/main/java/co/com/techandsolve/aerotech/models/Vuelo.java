@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "vuelo")
 @NamedQueries({
-		@NamedQuery(name = Vuelo.BY_CITY, query = "select vuelo from Vuelo vuelo JOIN FETCH vuelo.idAvion where vuelo.origen like :origen AND vuelo.destino like :destino"),
-		@NamedQuery(name = Vuelo.BY_ID, query = "select vuelo from Vuelo vuelo JOIN FETCH vuelo.idAvion where vuelo.id like :id") })
+		@NamedQuery(name = Vuelo.BY_CITY, query = "select vuelo from Vuelo vuelo JOIN FETCH vuelo.idAvion where vuelo.origen= :origen AND vuelo.destino= :destino"),
+		@NamedQuery(name = Vuelo.BY_ID, query = "select vuelo from Vuelo vuelo JOIN FETCH vuelo.idAvion where vuelo.id= :id") })
 public class Vuelo {
 
 	public static final String BY_CITY = "Busquedad de Vuelos por Ciudades";
@@ -48,17 +48,6 @@ public class Vuelo {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "idAvion", referencedColumnName = "id")
 	private Avion idAvion;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idVuelo", cascade = CascadeType.ALL)
-	private List<Reserva> reservas = new ArrayList<>();
-
-	public List<Reserva> getReservas() {
-		return reservas;
-	}
-
-	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
-	}
 
 	public String getId() {
 		return id;
