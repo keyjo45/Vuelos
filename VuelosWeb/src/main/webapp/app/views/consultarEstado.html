@@ -1,7 +1,7 @@
 <head>
 <meta charset="utf-8">
 </head>
-<section>
+<section ng-controller="vuelosController">
 	<div class="row main-container">
 		<div class="row">
 			<h1 class="text-center lista">ESTADO DEL VUELO</h1>
@@ -12,10 +12,10 @@
 					<div class="form-group">
 						<label for="destino">Referencia del Vuelo <b
 							class="obligatorio"> * </b></label>
-							<input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ejemplo: FKY1**" ng-model="vuelo.id" autofocus required="required" >
+							<input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ejemplo: FKY1**" ng-model="idVuelo" autofocus required="required" >
 					</div>
 					<button type="button" class="btn btn-primary"
-						ng-click="buscarVuelosSegunEstado();">
+						ng-click="buscarVueloSegunEstado();">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					</button>
 				</form>
@@ -25,4 +25,34 @@
 			<br> <br>
 		</div>
 	</div>
+	<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<table class="table table-condensed" >
+<tr class="text-center">
+<td>Vuelo</td>
+<td>Aerolinea</td>
+<td>Avion</td>
+<td>Fecha de Vuelo</td>
+<td>Hora de Vuelo</td>
+<td>Origen</td>
+<td>Destino</td>
+<td>Precio</td>
+<td>Estado del Vuelo </td>
+</tr>
+<tr class="active text-center">
+<td>{{vueloConsultados.id}}</td>
+<td>{{vueloConsultados.idAvion.idAerolinea.nombre}}</td>
+<td>{{vueloConsultados.idAvion.placa}}</td>
+<td>{{vueloConsultados.fecha | date :  "dd-MM-y"}}</td>
+<td>{{vueloConsultados.fecha | date : "h:mm a"}}</td>
+<td>{{vueloConsultados.origen}}</td>
+<td>{{vueloConsultados.destino}}</td>
+<td>{{vueloConsultados.tarifa | currency}}</td>
+<td>{{vueloConsultados.estado}}</td>
+</tr>
+</table>
+</div>
+<div class="col-md-1"></div>
+</div>
 </section>

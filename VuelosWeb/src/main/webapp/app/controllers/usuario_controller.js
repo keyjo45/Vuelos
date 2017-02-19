@@ -1,4 +1,4 @@
-angular.module('vuelos').controller("usuarioController" , function($scope, usuarioService, $http, $rootScope, localStorageService, $state){
+angular.module('vuelos').controller("usuarioController" , function($scope, usuarioService, $http, $rootScope, localStorageService, $state, auth){
 	$scope.usuario={};
 	
 	 $scope.guardarUsuario = function(form) {
@@ -26,20 +26,11 @@ angular.module('vuelos').controller("usuarioController" , function($scope, usuar
 	    	usuarioService.login($scope.userName, $scope.password)
 	            .success(function (data, status) {
 	            	  $http.defaults.headers.common.token = data.token;
-	                  $rootScope.usuario = data;
-	                  localStorageService.add('usuario',$rootScope.usuario);
-	                  cargarHome();
-	                  
-
+	            	  localStorage.setItem('usuario',JSON.stringify(data));
+	                  $rootScope.usuario = JSON.parse(localStorage.getItem('usuario'));
+	                  auth.login($rootScope.usuario);
 		        }).error(function (data, status, headers) {
-		        	sweetAlert("Oops...!", "Existe un problema al ingresar en el sisitema!"+ headers("ERR_DESC"), "error");
+		        	sweetAlert("Oops...!", "Existe un problema al ingresar en el sisitema! "+ headers("ERR_DESC"), "error");
 		        });
-	    };
-	    
-	    function cargarHome(){
-	    	
-	    	$state.go('home');
-	    	
-	    }
-	    
+	    };	    	    
 });

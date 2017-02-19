@@ -24,7 +24,6 @@ public class ReservaServices {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ReservaCliente> consultarReserva(@PathParam("id") long id){
-		
 		return reservaUsuario.consultarReservaPorIdCliente(id);
 	}
 

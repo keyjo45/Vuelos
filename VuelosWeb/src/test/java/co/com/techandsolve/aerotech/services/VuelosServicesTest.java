@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import co.com.techandsolve.aerotech.business.VueloConsultado;
 import co.com.techandsolve.aerotech.daos.VuelosDao;
 import co.com.techandsolve.aerotech.dto.VuelosConsultados;
+import co.com.techandsolve.aerotech.exception.ValidacionException;
 import co.com.techandsolve.aerotech.models.Vuelo;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -45,7 +46,7 @@ public class VuelosServicesTest {
 	}
 
 	@Test
-	public void debeConsultarTarifasVuelosPorID() {
+	public void debeConsultarTarifasVuelosPorID() throws ValidacionException {
 
 		String idVuelo = "FKY123";
 

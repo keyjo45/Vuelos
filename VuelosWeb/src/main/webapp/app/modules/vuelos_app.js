@@ -1,4 +1,5 @@
-angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router'])
+angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router', 'ngCookies'])
+
 .config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	localStorageServiceProvider.setPrefix('ls');
 }])
@@ -36,5 +37,11 @@ angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router'])
     	 url:'/registro',
     	 templateUrl: 'app/views/registro.html',
          controller: 'usuarioController'
+    })
+})
+.run(function($rootScope, auth){
+   
+    $rootScope.$on('$routeChangeStart', function(){
+         auth.checkStatus();
     })
 });

@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import co.com.techandsolve.aerotech.business.VueloConsultado;
 import co.com.techandsolve.aerotech.daos.VuelosDao;
 import co.com.techandsolve.aerotech.dto.VuelosConsultados;
+import co.com.techandsolve.aerotech.exception.ValidacionException;
 import co.com.techandsolve.aerotech.models.Vuelo;
 
 @Path("/vuelo")
@@ -38,9 +39,13 @@ public class VuelosServices {
 	@Path("/consultarEstadoVuelo/{id}")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Vuelo consultarTarifasVuelosPorId(@PathParam("id") String id) {
-
-		return vueloDao.consultarVueloPorID(id);
+	public Vuelo consultarTarifasVuelosPorId(@PathParam("id") String id) throws ValidacionException {
+		
+		try{
+			return vueloDao.consultarVueloPorID(id);
+		}catch (Exception e) {
+			throw new ValidacionException ("NO SE ENCONTRARON VUELOS: "+e.getMessage());
+		}
 	}
 
 }

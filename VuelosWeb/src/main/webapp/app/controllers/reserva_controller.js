@@ -1,9 +1,9 @@
-angular.module('vuelos').controller("reservaController" , function($scope, $rootScope, reservaService, $window, $http, localStorageService){
+angular.module('vuelos').controller("reservaController" , function($scope, $cookies, reservaService, $window, $http, localStorageService){
 	$scope.reservas={};
 	
 	 		$scope.consultarReserva = function() {
 	 			
-		 	reservaService.consultarReserva($rootScope.usuario.id)
+		 	reservaService.consultarReserva(usuarioPrueba.id)
 	        .success(function (data) {
 	        	$scope.reservas=data;
 	        }).error(function (data, status, headers) {

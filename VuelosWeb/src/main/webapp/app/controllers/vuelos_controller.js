@@ -1,5 +1,5 @@
 angular.module('vuelos').controller("vuelosController", function($scope, vuelosService) {
-			$scope.vuelos = [];
+			$scope.vuelosConsultados =[];
 			$scope.buscarVuelosSegunTarifa = function() {
 				vuelosService.buscar($scope.ciudadOrigen, $scope.ciudadDestino)
 						.success(function(data) {
@@ -23,6 +23,16 @@ angular.module('vuelos').controller("vuelosController", function($scope, vuelosS
 			};
 			
 			$scope.buscarVueloSegunEstado = function(){
-				alert("Llego vuelo...");
+				vuelosService.buscarVueloId($scope.idVuelo)
+				.success(function(data) {
+					$scope.vueloConsultados=data;
+				}).error(
+						function(headers) {
+							sweetAlert("Oops...!",
+									"Existe un problema al buscar el vuelo: "
+											+ headers("ERR_DESC"),
+									"error");
+						});
 			}
+		
 		});

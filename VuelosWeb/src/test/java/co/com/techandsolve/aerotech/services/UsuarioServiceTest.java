@@ -64,11 +64,17 @@ public class UsuarioServiceTest {
 		Assert.assertEquals(usuario, usuarioObtenido);
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	@Test(expected = ValidacionException.class)
 	public void noDebeRetornarUsuario() throws ValidacionException {
 
 		String passwordEncript = Utilidades.generarCodificacion("123");
+		
 		Mockito.when(securityBean.login("Yosimar", passwordEncript)).thenThrow(ValidacionException.class);
 		usuarioObtenido = usuarioServices.login("Yosimar", "123");
+		
+		Mockito.verify(securityBean).login("Yosimar", passwordEncript);
+		
 	}
 }
