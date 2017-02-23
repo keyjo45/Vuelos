@@ -50,14 +50,14 @@ public class UsuarioServices {
 	@Path("/login/{usuario}/{password}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario login(@PathParam("usuario") String usuario, @PathParam("password") String password) throws ValidacionException {
-		
+	public Usuario login(@PathParam("usuario") String usuario, @PathParam("password") String password){
+		Usuario usuarioObtenido=new Usuario();
 		try{
 			String passwordEncript = Utilidades.generarCodificacion(password);
-			return securityBean.login(usuario, passwordEncript);
+			usuarioObtenido= securityBean.login(usuario, passwordEncript);
 		}catch (Exception e){
-			LOGGER.info("login: Usuario no valido ", e.getMessage());
-			throw new ValidacionException(" Credenciales no validas ");
+			LOGGER.info("Usuario:  Credenciales no validas ", e.getMessage());
 		}
+		return usuarioObtenido;
 	}
 }
