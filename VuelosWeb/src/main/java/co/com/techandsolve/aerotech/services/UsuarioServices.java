@@ -1,8 +1,6 @@
 package co.com.techandsolve.aerotech.services;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -12,7 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
+import org.slf4j.LoggerFactory;
+import ch.qos.logback.classic.Logger;
 import co.com.techandsolve.aerotech.beans.SecurityBean;
 import co.com.techandsolve.aerotech.daos.UsuarioDao;
 import co.com.techandsolve.aerotech.exception.ValidacionException;
@@ -22,6 +21,8 @@ import co.com.techandsolve.aerotech.utilidades.Utilidades;
 @Path("/usuario")
 public class UsuarioServices {
 	
+	private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(UsuarioServices.class);
+		
 	@Inject
 	private UsuarioDao usuarioDao;
 	
@@ -55,6 +56,7 @@ public class UsuarioServices {
 			String passwordEncript = Utilidades.generarCodificacion(password);
 			return securityBean.login(usuario, passwordEncript);
 		}catch (Exception e){
+			LOGGER.info("login: Usuario no valido ", e.getMessage());
 			throw new ValidacionException(" Credenciales no validas ");
 		}
 	}

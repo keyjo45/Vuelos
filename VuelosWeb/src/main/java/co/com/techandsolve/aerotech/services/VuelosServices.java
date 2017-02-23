@@ -10,6 +10,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.slf4j.LoggerFactory;
+
+import ch.qos.logback.classic.Logger;
 import co.com.techandsolve.aerotech.business.VueloConsultado;
 import co.com.techandsolve.aerotech.daos.VuelosDao;
 import co.com.techandsolve.aerotech.dto.VuelosConsultados;
@@ -18,6 +21,8 @@ import co.com.techandsolve.aerotech.models.Vuelo;
 
 @Path("/vuelo")
 public class VuelosServices {
+	
+	private static final Logger LOGGER = (Logger)  LoggerFactory.getLogger(VuelosServices.class);
 
 	@Inject
 	VueloConsultado vueloFacade;
@@ -44,7 +49,8 @@ public class VuelosServices {
 		try{
 			return vueloDao.consultarVueloPorID(id);
 		}catch (Exception e) {
-			throw new ValidacionException ("NO SE ENCONTRARON VUELOS: "+e.getMessage());
+			LOGGER.info("Vuelo: NO SE ENCONTRARON VUELOS ", e.getMessage());
+			throw new ValidacionException ("NO SE ENCONTRARON VUELOS: ");
 		}
 	}
 

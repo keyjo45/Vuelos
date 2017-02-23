@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 import com.google.common.hash.Hashing;
 
@@ -39,5 +40,4 @@ public class Utilidades {
 
 		return edad;
 	}
-
 }
