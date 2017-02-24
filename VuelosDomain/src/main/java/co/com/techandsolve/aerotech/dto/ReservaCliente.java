@@ -36,6 +36,7 @@ public class ReservaCliente {
 		
 	}
 	
+	
 	public ReservaCliente(Reserva reserva){
 		
 		setReservaCliente(reserva);
@@ -144,6 +145,7 @@ public class ReservaCliente {
 	public void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+	
 	
 	public void setReservaCliente(Reserva reserva){
 		this.id=reserva.getId();

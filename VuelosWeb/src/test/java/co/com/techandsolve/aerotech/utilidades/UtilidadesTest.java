@@ -21,7 +21,7 @@ public class UtilidadesTest {
 	
 	@Test(expected=ValidacionException.class)
 	public void debeValidarExceptionCalcularEdad() throws ValidacionException {
-		String fecha="";
+		String fecha="fdg";
 		Utilidades.calcularEdad(fecha);
 	}
 

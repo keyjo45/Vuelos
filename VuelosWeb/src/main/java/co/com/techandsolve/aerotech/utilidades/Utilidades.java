@@ -4,13 +4,16 @@ import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
 
 import com.google.common.hash.Hashing;
 
 import co.com.techandsolve.aerotech.exception.ValidacionException;
 
 public class Utilidades {
+	
+	public Utilidades(){
+		
+	}
 
 	public static String generarCodificacion(String password) {
 		return Hashing.sha256().hashString(password, Charset.defaultCharset()).toString();

@@ -23,8 +23,6 @@ public class Aerolinea {
 
 	public Aerolinea(){
 		
-		//constructor
-		
 	}
 	
 	public long getId() {

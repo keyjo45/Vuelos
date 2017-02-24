@@ -58,10 +58,6 @@ public class Usuario {
 	private List<Reserva> reservas=new ArrayList<>();
 	
 
-	public Usuario(){
-		
-	}
-
 	public List<Reserva> getReservas() {
 		return reservas;
 	}
