@@ -14,49 +14,48 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 @NamedQueries({
-	@NamedQuery(name= Usuario.BY_EMAIL_PASSWORD, query= "SELECT usuario FROM Usuario as usuario WHERE usuario.email LIKE :email AND usuario.password=:password"),
-	@NamedQuery(name= Usuario.USUARIO_ENCONTRADO, query= "SELECT usuario FROM Usuario as usuario WHERE usuario.id=:id OR usuario.email LIKE :email OR usuario.password=:password")
-})
+		@NamedQuery(name = Usuario.BY_EMAIL_PASSWORD, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.email LIKE :email AND usuario.password=:password"),
+		@NamedQuery(name = Usuario.USUARIO_ENCONTRADO, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.id=:id OR usuario.email LIKE :email OR usuario.password=:password"),
+		@NamedQuery(name = Usuario.BY_AUTORIZACION, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.email LIKE :email") })
 public class Usuario {
-	
-	public static final String USUARIO_ENCONTRADO="USER_FIND"; 
-	public static  final  String BY_EMAIL_PASSWORD="USER_FIND_BY_EMAIL_PASSWORD";
-	
+
+	public static final String BY_AUTORIZACION = "USER_AUTORIZACION";
+	public static final String USUARIO_ENCONTRADO = "USER_FIND";
+	public static final String BY_EMAIL_PASSWORD = "USER_FIND_BY_EMAIL_PASSWORD";
+
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	private long id;
-	
-	@Column(name="nombres")
+
+	@Column(name = "nombres")
 	private String nombres;
-	
-	@Column(name="apellidos")
+
+	@Column(name = "apellidos")
 	private String apellidos;
-	
-	@Column(name="fecha_nacimiento")
+
+	@Column(name = "fecha_nacimiento")
 	private Date fechaNacimiento;
-	
-	@Column(name="genero")
+
+	@Column(name = "genero")
 	private String genero;
-	
-	@Column(name="telefono")
+
+	@Column(name = "telefono")
 	private long telefono;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
+
 	@Transient
 	private String token;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="idUsuario" , cascade = CascadeType.ALL)
-	private List<Reserva> reservas=new ArrayList<>();
-	
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idUsuario", cascade = CascadeType.ALL)
+	private List<Reserva> reservas = new ArrayList<>();
 
 	public List<Reserva> getReservas() {
 		return reservas;
@@ -66,7 +65,6 @@ public class Usuario {
 		this.reservas = reservas;
 	}
 
-	
 	public long getId() {
 		return id;
 	}
@@ -130,7 +128,7 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getToken() {
 		return token;
 	}

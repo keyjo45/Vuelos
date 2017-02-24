@@ -18,27 +18,27 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import co.com.techandsolve.aerotech.beans.Autorizacion;
 import co.com.techandsolve.aerotech.models.Usuario;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioDaoTest {
-	
+
 	@InjectMocks
 	private UsuarioDao usuarioDao;
-	
+
 	@Mock
 	EntityManager em;
-	
+
 	@Mock
 	TypedQuery<Usuario> query;
-	
+
 	@Mock
 	private List<Usuario> listUsuario;
-	
-	
+
 	@Test
-	public void debeCrearUsuario(){
-		
+	public void debeCrearUsuario() {
+
 		Usuario usuarioCreado = new Usuario();
 		usuarioCreado.setId(123);
 		usuarioCreado.setApellidos("VALEGA");
@@ -51,46 +51,62 @@ public class UsuarioDaoTest {
 		verify(em).persist(usuarioCreado);
 		Assert.assertEquals("YOSIMAR ENRIQUE", usuarioCreado.getNombres());
 	}
-	
-	@Test
-	public void debeConsultarUsuario(){
 
-		List<Usuario> listUsuarioObtenido =new ArrayList<Usuario>();
-		
+	@Test
+	public void debeConsultarUsuario() {
+
+		List<Usuario> listUsuarioObtenido = new ArrayList<Usuario>();
+
 		Usuario usuarioObtenido = new Usuario();
-				
-		
+
 		when(em.createNamedQuery(Usuario.USUARIO_ENCONTRADO, Usuario.class)).thenReturn(query);
 		when(query.setParameter("id", usuarioObtenido.getId())).thenReturn(query);
 		when(query.setParameter("email", usuarioObtenido.getEmail())).thenReturn(query);
 		when(query.setParameter("password", usuarioObtenido.getPassword())).thenReturn(query);
 		when(query.getResultList()).thenReturn(listUsuario);
-		
-		listUsuarioObtenido=usuarioDao.consultarUsuario(usuarioObtenido);
-		
-		assertEquals(listUsuario,listUsuarioObtenido);
-		verify(query).setParameter("id", usuarioObtenido.getId());
-		
-	}
-	
-	@Test
-	public void debeConsultarUsuarioPorEmailYPassword(){
 
-		List<Usuario> listUsuarioObtenido =new ArrayList<Usuario>();
-		
-		String user="keyjo45@yahoo.es";
-		String password="PrvEaec5j4XWFJS3P0+dUw==";
-		
+		listUsuarioObtenido = usuarioDao.consultarUsuario(usuarioObtenido);
+
+		assertEquals(listUsuario, listUsuarioObtenido);
+		verify(query).setParameter("id", usuarioObtenido.getId());
+
+	}
+
+	@Test
+	public void debeConsultarUsuarioPorEmailYPassword() {
+
+		List<Usuario> listUsuarioObtenido = new ArrayList<Usuario>();
+
+		String user = "keyjo45@yahoo.es";
+		String password = "PrvEaec5j4XWFJS3P0+dUw==";
+
 		when(em.createNamedQuery(Usuario.BY_EMAIL_PASSWORD, Usuario.class)).thenReturn(query);
 		when(query.setParameter("email", user)).thenReturn(query);
 		when(query.setParameter("password", password)).thenReturn(query);
 		when(query.getResultList()).thenReturn(listUsuario);
-		
-		listUsuarioObtenido=usuarioDao.consultarUsuarioPorEmailYPassword(user, password);
-		
-		assertEquals(listUsuario,listUsuarioObtenido);
+
+		listUsuarioObtenido = usuarioDao.consultarUsuarioPorEmailYPassword(user, password);
+
+		assertEquals(listUsuario, listUsuarioObtenido);
 		verify(query).setParameter("email", user);
-		
+
+	}
+
+	@Test
+	public void debeConsultarUsuarioPorAutorizacion() {
+
+		Autorizacion autorizacion = new Autorizacion();
+		Usuario usuario = new Usuario();
+
+		when(em.createNamedQuery(Usuario.BY_AUTORIZACION, Usuario.class)).thenReturn(query);
+		when(query.setParameter("email", autorizacion.getUserName())).thenReturn(query);
+		when(query.getSingleResult()).thenReturn(usuario);
+
+		Usuario usuarioObtenido = usuarioDao.consultarUsuarioPorAutorizacion(autorizacion);
+
+		assertEquals(usuario, usuarioObtenido);
+		verify(query).setParameter("email", autorizacion.getUserName());
+
 	}
 
 }

@@ -18,8 +18,6 @@ public class SecurityBean {
 
 	private static final Map<String, Usuario> activeAutorizations = new ConcurrentHashMap<>();
 
-	private List<Usuario> usuario;
-
 	public Usuario login(String userName, String password) {
 
 		List<Autorizacion> users = Arrays.asList(new Autorizacion(userName, password));
@@ -28,35 +26,27 @@ public class SecurityBean {
 				.orElseThrow(this::getLoginEx);
 	}
 
-	public void loguot(String token) {
-		activeAutorizations.remove(token);
+	public Usuario loguot(String token) {
+		return activeAutorizations.remove(token);
 	}
 
-	private RuntimeException getLoginEx() {
+	public RuntimeException getLoginEx() {
 
 		return new RuntimeException("Credenciales de ingreso no validas.");
 	}
 
-	private boolean checkPassword(Autorizacion autorizacion, String password, String user) {
-		usuario = usuarioDao.consultarUsuarioPorEmailYPassword(user, password);
-		return autorizacion.getUserName().equals(usuario.get(0).getEmail())
-				&& autorizacion.getPassword().equals(usuario.get(0).getPassword());
+	public boolean checkPassword(Autorizacion autorizacion, String password, String user) {
+		List<Usuario>  listaUsuario = usuarioDao.consultarUsuarioPorEmailYPassword(user, password);
+		return autorizacion.getUserName().equals(listaUsuario.get(0).getEmail())
+				&& autorizacion.getPassword().equals(listaUsuario.get(0).getPassword());
 	}
 
-	private Usuario generateToken(Autorizacion autorizacion) {
-		final String token = UUID.randomUUID().toString();
+	public Usuario generateToken(Autorizacion autorizacion) {
 
-		Usuario usu = new Usuario();
-		usu.setId(usuario.get(0).getId());
-		usu.setNombres(usuario.get(0).getNombres());
-		usu.setApellidos(usuario.get(0).getApellidos());
-		usu.setEmail(usuario.get(0).getEmail());
-		usu.setFechaNacimiento(usuario.get(0).getFechaNacimiento());
-		usu.setGenero(usuario.get(0).getGenero());
-		usu.setTelefono(usuario.get(0).getTelefono());
-		usu.setToken(token);
-		activeAutorizations.put(token, usu);
-		return usu;
+		String token = UUID.randomUUID().toString();
+		Usuario usuario = usuarioDao.consultarUsuarioPorAutorizacion(autorizacion);
+		usuario.setToken(token);
+		activeAutorizations.put(token, usuario);
+		return usuario;
 	}
-
 }

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import co.com.techandsolve.aerotech.beans.Autorizacion;
 import co.com.techandsolve.aerotech.models.Usuario;
 
 
@@ -35,6 +36,12 @@ public class UsuarioDao {
 		query.setParameter("email",  user);
 		query.setParameter("password",  password);
 		return query.getResultList();
+	}
+	
+	public Usuario consultarUsuarioPorAutorizacion(Autorizacion autorizacion){
+		query=em.createNamedQuery(Usuario.BY_AUTORIZACION, Usuario.class);
+		query.setParameter("email",  autorizacion.getUserName());
+		return query.getSingleResult();
 	}
 
 }
