@@ -20,20 +20,20 @@ import co.com.techandsolve.aerotech.utilidades.Utilidades;
 
 @Path("/usuario")
 public class UsuarioServices {
-	
+
 	private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(UsuarioServices.class);
-		
+
 	@Inject
 	private UsuarioDao usuarioDao;
-	
+
 	@Inject
 	SecurityBean securityBean;
-	
+
 	@PUT
 	@Path("/saveUsuario")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addClient(@Valid Usuario usuario) throws ValidacionException {
-		
+
 		String password = Utilidades.generarCodificacion(usuario.getPassword());
 		usuario.setPassword(password);
 		List<Usuario> listUsuario = usuarioDao.consultarUsuario(usuario);
@@ -45,19 +45,19 @@ public class UsuarioServices {
 					+ usuario.getId() + ", el email: " + usuario.getEmail() + " y password");
 		}
 	}
-	
+
 	@POST
 	@Path("/login/{usuario}/{password}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario login(@PathParam("usuario") String usuario, @PathParam("password") String password){
-		Usuario usuarioObtenido=new Usuario();
-		try{
+	public Usuario login(@PathParam("usuario") String usuario, @PathParam("password") String password)throws ValidacionException {
+
+		try {
 			String passwordEncript = Utilidades.generarCodificacion(password);
-			usuarioObtenido= securityBean.login(usuario, passwordEncript);
-		}catch (Exception e){
-			LOGGER.info("Usuario:  Credenciales no validas ", e.getMessage());
+			return securityBean.login(usuario, passwordEncript);
+		} catch (Exception e) {
+			LOGGER.info("Usuario:  Credenciales no validas " + e.getMessage(), e);
+			throw new ValidacionException("Credenciales no validas ");
 		}
-		return usuarioObtenido;
 	}
 }

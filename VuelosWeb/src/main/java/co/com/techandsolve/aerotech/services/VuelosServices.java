@@ -21,8 +21,8 @@ import co.com.techandsolve.aerotech.models.Vuelo;
 
 @Path("/vuelo")
 public class VuelosServices {
-	
-	private static final Logger LOGGER = (Logger)  LoggerFactory.getLogger(VuelosServices.class);
+
+	private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(VuelosServices.class);
 
 	@Inject
 	VueloConsultado vueloFacade;
@@ -34,8 +34,7 @@ public class VuelosServices {
 	@Path("/consultarVuelos/{ciudadOrigen}/{ciudadDestino}")
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<VuelosConsultados> consultarTarifasVuelos(@PathParam("ciudadOrigen") String ciudadOrigen,
-			@PathParam("ciudadDestino") String ciudadDestino) {
+	public List<VuelosConsultados> consultarTarifasVuelos(@PathParam("ciudadOrigen") String ciudadOrigen, @PathParam("ciudadDestino") String ciudadDestino) {
 
 		return vueloFacade.consultarTarifaVuelo(ciudadOrigen, ciudadDestino);
 	}
@@ -45,13 +44,12 @@ public class VuelosServices {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Vuelo consultarTarifasVuelosPorId(@PathParam("id") String id) throws ValidacionException {
-		
-		try{
+
+		try {
 			return vueloDao.consultarVueloPorID(id);
-		}catch (Exception e) {
-			LOGGER.info("Vuelo: NO SE ENCONTRARON VUELOS ", e.getMessage());
-			throw new ValidacionException ("NO SE ENCONTRARON VUELOS: ");
+		} catch (Exception e) {
+			LOGGER.info("Vuelo: NO SE ENCONTRARON VUELOS " + e.getMessage(), e);
+			throw new ValidacionException("No se encontraron vuelos ");
 		}
 	}
-
 }
