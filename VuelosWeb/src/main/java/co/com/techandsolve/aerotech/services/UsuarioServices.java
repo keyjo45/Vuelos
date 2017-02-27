@@ -1,6 +1,7 @@
 package co.com.techandsolve.aerotech.services;
 
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -48,9 +49,10 @@ public class UsuarioServices {
 
 	@POST
 	@Path("/login/{usuario}/{password}")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario login(@PathParam("usuario") String usuario, @PathParam("password") String password)throws ValidacionException {
+	public Usuario login(@PathParam("usuario") String usuario, @PathParam("password") String password)
+			throws ValidacionException {
 
 		try {
 			String passwordEncript = Utilidades.generarCodificacion(password);
@@ -60,4 +62,12 @@ public class UsuarioServices {
 			throw new ValidacionException("Credenciales no validas ");
 		}
 	}
+
+	@PUT
+	@Path("logout")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void loguot(Usuario usuario) {
+		securityBean.loguot(usuario.getToken());
+	}
+
 }

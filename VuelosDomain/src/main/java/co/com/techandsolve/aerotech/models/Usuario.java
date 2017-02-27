@@ -17,14 +17,14 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "usuario")
 @NamedQueries({
-		@NamedQuery(name = Usuario.BY_EMAIL_PASSWORD, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.email LIKE :email AND usuario.password=:password"),
-		@NamedQuery(name = Usuario.USUARIO_ENCONTRADO, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.id=:id OR usuario.email LIKE :email OR usuario.password=:password"),
-		@NamedQuery(name = Usuario.BY_AUTORIZACION, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.email LIKE :email") })
+		@NamedQuery(name = Usuario.BY_EMAIL, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.email=:email AND usuario.password=:password"),
+		@NamedQuery(name = Usuario.USUARIO_ENCONTRADO, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.id=:id OR usuario.email=:email OR usuario.password=:password"),
+		@NamedQuery(name = Usuario.BY_AUTORIZACION, query = "SELECT usuario FROM Usuario as usuario WHERE usuario.email=:email")})
 public class Usuario {
 
 	public static final String BY_AUTORIZACION = "USER_AUTORIZACION";
 	public static final String USUARIO_ENCONTRADO = "USER_FIND";
-	public static final String BY_EMAIL_PASSWORD = "USER_FIND_BY_EMAIL_PASSWORD";
+	public static final String BY_EMAIL = "USER_FIND_BY_EMAIL_PASSWORD";
 
 	@Id
 	@Column(name = "id")
@@ -53,17 +53,6 @@ public class Usuario {
 
 	@Transient
 	private String token;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idUsuario", cascade = CascadeType.ALL)
-	private List<Reserva> reservas = new ArrayList<>();
-
-	public List<Reserva> getReservas() {
-		return reservas;
-	}
-
-	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
-	}
 
 	public long getId() {
 		return id;

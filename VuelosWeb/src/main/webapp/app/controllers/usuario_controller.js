@@ -1,4 +1,4 @@
-angular.module('vuelos').controller("usuarioController" , function($scope, usuarioService, $http, $rootScope, localStorageService, $state, auth){
+angular.module('vuelos').controller("usuarioController" ,  function($scope, usuarioService, $http, $rootScope, localStorageService, $state, auth){
 	$scope.usuario={};
 	
 	 $scope.guardarUsuario = function(form) {

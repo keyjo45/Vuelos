@@ -15,6 +15,14 @@ angular.module("vuelos").service("usuarioService",  function($http){
 		});
 	}
 	
+	this.logout=function(usuario){
+		return $http({
+			method: 'PUT',
+			url: 'rest/usuario/logout/',
+			data: usuario
+		});
+	}
+	
 	this.consultProduct=function(){
 		return $http({
 			method: 'GET',

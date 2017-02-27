@@ -35,7 +35,7 @@ public class UsuarioDao {
 	}
 	
 	public List<Usuario> consultarUsuarioPorEmailYPassword(String user, String password){
-		query=em.createNamedQuery(Usuario.BY_EMAIL_PASSWORD, Usuario.class);
+		query=em.createNamedQuery(Usuario.BY_EMAIL, Usuario.class);
 		query.setParameter(EMAIL,  user);
 		query.setParameter(CLAVE,  password);
 		return query.getResultList();

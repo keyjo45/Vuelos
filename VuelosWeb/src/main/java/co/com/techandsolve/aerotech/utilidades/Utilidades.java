@@ -10,7 +10,8 @@ import com.google.common.hash.Hashing;
 import co.com.techandsolve.aerotech.exception.ValidacionException;
 
 public class Utilidades {
-	
+
+
 	public static String generarCodificacion(String password) {
 		return Hashing.sha256().hashString(password, Charset.defaultCharset()).toString();
 	}

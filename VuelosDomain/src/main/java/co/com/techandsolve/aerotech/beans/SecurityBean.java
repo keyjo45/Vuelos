@@ -19,9 +19,8 @@ public class SecurityBean {
 	private static final Map<String, Usuario> activeAutorizations = new ConcurrentHashMap<>();
 
 	public Usuario login(String userName, String password) {
-
+		
 		List<Autorizacion> users = Arrays.asList(new Autorizacion(userName, password));
-
 		return users.stream().filter(u -> checkPassword(u, password, userName)).map(this::generateToken).findAny()
 				.orElseThrow(this::getLoginEx);
 	}

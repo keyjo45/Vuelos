@@ -3,6 +3,8 @@ package co.com.techandsolve.aerotech.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -77,5 +79,13 @@ public class UsuarioServiceTest {
 		usuarioObtenido = usuarioServices.login("Yosimar", "123");
 		Mockito.verify(securityBean).login("Yosimar", passwordEncript);
 
+	}
+	
+	@Test
+	public void debeCerrarSesion(){	
+		
+		Mockito.when(securityBean.loguot(usuario.getToken())).thenReturn(usuario);
+		usuarioServices.loguot(usuario);		
+		Mockito.verify(securityBean).loguot(usuario.getToken());
 	}
 }

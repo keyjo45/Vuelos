@@ -37,16 +37,12 @@ public class ReservaDaoTest {
 	public void debeConsultarReservaSegunIdUsuario() {
 
 		long idUsuario = 1129572970;
-
 		Usuario usuario = new Usuario();
 		usuario.setId(idUsuario);
-
 		Mockito.when(em.createNamedQuery(Reserva.BY_ID_USUARIO, Reserva.class)).thenReturn(query);
 		Mockito.when(query.setParameter("id", usuario.getId())).thenReturn(query);
 		Mockito.when(query.getResultList()).thenReturn(listaReserva);
-
 		List<Reserva> listaReservaObtenida = reservaDao.consultarReservaPorIdUsuario(idUsuario);
-
 		Assert.assertEquals(listaReserva, listaReservaObtenida);
 		verify(query).setParameter("id", usuario.getId());
 	}

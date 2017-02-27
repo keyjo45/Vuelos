@@ -80,7 +80,7 @@ public class UsuarioDaoTest {
 		String user = "keyjo45@yahoo.es";
 		String password = "PrvEaec5j4XWFJS3P0+dUw==";
 
-		when(em.createNamedQuery(Usuario.BY_EMAIL_PASSWORD, Usuario.class)).thenReturn(query);
+		when(em.createNamedQuery(Usuario.BY_EMAIL, Usuario.class)).thenReturn(query);
 		when(query.setParameter("email", user)).thenReturn(query);
 		when(query.setParameter("password", password)).thenReturn(query);
 		when(query.getResultList()).thenReturn(listUsuario);
