@@ -3,7 +3,7 @@ angular.module('vuelos').controller("reservaController" , function($scope, $cook
 	
 	 		$scope.consultarReserva = function() {
 	 			
-		 	reservaService.consultarReserva($cookies.usuarioPrueba.id)
+		 	reservaService.consultarReserva($scope.usuario.id)
 	        .success(function (data) {
 	        	$scope.reservas=data;
 	        }).error(function (data, status, headers) {

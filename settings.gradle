@@ -1,2 +1,2 @@
-include ':VuelosDomain',':VuelosWeb'
+include ':VuelosDomain',':VuelosWeb', ':Atdd_Vuelo'
 rootProject.name='Vuelos'

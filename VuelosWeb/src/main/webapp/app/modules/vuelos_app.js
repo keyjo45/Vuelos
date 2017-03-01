@@ -1,15 +1,15 @@
-angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router', 'ngCookies'])
+angular.module('vuelos',['LocalStorageModule', 'ui.router', 'ngCookies'])
 
 .config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	localStorageServiceProvider.setPrefix('ls');
 }])
 .config(function($stateProvider, $urlRouterProvider){
 	
-	$urlRouterProvider.otherwise('signin/');
+	$urlRouterProvider.otherwise('signin');
 		
 	 $stateProvider
      .state('signin', {
-    	 url:'/signin/',      	 
+    	 url:'/signin',      	 
     	 templateUrl: 'app/views/login.html',	
     	 controller: 'usuarioController'
     })
@@ -40,8 +40,8 @@ angular.module('vuelos',['angularCSS', 'LocalStorageModule', 'ui.router', 'ngCoo
     })
 })
 .run(function($rootScope, auth){
-   
-    $rootScope.$on('$routeChangeStart', function(){
-         auth.checkStatus();
+       
+    $rootScope.$on('$stateChangeStart', function () {
+    	auth.checkStatus();
     })
-});
+})

@@ -1,23 +1,25 @@
-angular.module('vuelos').factory("auth", function($cookies, $cookieStore, $state) {
+angular.module('vuelos').factory(
+		"auth",
+		function($cookies, $cookieStore, $state) {
 			return {
 				login : function(usuario) {
-					$cookies.usuarioPrueba = usuario, 
-					console.log("este es el usuario: "+$cookies.usuarioPrueba.id);
+					$cookies.put('usuario', JSON.stringify(usuario));
 					$state.go('home');
 				},
 				logout : function() {
-					$cookieStore.remove('usuario'), $state.go('signin');
+					$cookieStore.remove('usuario'),
+					  $state.go('signin');
 				},
 				checkStatus : function() {
-					
-					var rutasPrivadas = [ 'home', 'home.misreservas',
-							'home.tarifa', 'home.estado' ];
+					console.log("llego");
+					var rutasPrivadas = [ 'home', 'home.tarifa', 'home.estado', 'home.misreservas', 'signin' ];
 					if (this.in_array($state.go(), rutasPrivadas)
-							&& typeof ($cookies.usuarioPrueba) == "undefined") {
+							&& typeof ($cookies.get('usuario')) == "undefined") {
 						$state.go('signin');
 					}
-					if (this.in_array("signin", rutasPrivadas)
-							&& typeof ($cookies.usuarioPrueba) != "undefined") {
+					
+					if (this.in_array('signin', rutasPrivadas)
+							&& typeof ($cookies.get('usuario')) != "undefined") {
 						$state.go('home');
 					}
 				},
@@ -31,4 +33,4 @@ angular.module('vuelos').factory("auth", function($cookies, $cookieStore, $state
 					return false;
 				}
 			}
-		});
+});

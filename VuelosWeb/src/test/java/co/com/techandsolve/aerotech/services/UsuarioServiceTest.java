@@ -3,8 +3,6 @@ package co.com.techandsolve.aerotech.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +16,7 @@ import co.com.techandsolve.aerotech.daos.UsuarioDao;
 import co.com.techandsolve.aerotech.exception.ValidacionException;
 import co.com.techandsolve.aerotech.models.Usuario;
 import co.com.techandsolve.aerotech.utilidades.Utilidades;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioServiceTest {

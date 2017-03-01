@@ -26,9 +26,7 @@ angular.module('vuelos').controller("usuarioController" ,  function($scope, usua
 	    	usuarioService.login($scope.userName, $scope.password)
 	            .success(function (data, status) {
 	            	  $http.defaults.headers.common.token = data.token;
-	            	  localStorage.setItem('usuario',JSON.stringify(data));
-	                  $rootScope.usuario = JSON.parse(localStorage.getItem('usuario'));
-	                  auth.login($rootScope.usuario);
+	                  auth.login(data);
 		        }).error(function (data, status, headers) {
 		        	sweetAlert("Oops...!", "Existe un problema al ingresar en el sisitema! "+ headers("ERR_DESC"), "error");
 		        });
