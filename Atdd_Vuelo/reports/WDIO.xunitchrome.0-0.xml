@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="ingreso_de_usuario8" timestamp="2017-03-03T09:26:44" time="4.706" tests="0" failures="0" errors="0" skipped="0">
+  <testsuite name="ingreso_de_usuario8" timestamp="2017-03-03T10:18:58" time="8.371" tests="0" failures="0" errors="0" skipped="0">
     <properties>
       <property name="specId" value="b8810705ec8045857ddb4ad4b5b91e21"/>
       <property name="suiteName" value="Ingreso de Usuario8"/>
       <property name="capabilities" value="chrome"/>
     </properties>
   </testsuite>
-  <testsuite name="ingreso_de_usuario21" timestamp="2017-03-03T09:26:44" time="4.701" tests="5" failures="0" errors="0" skipped="0">
+  <testsuite name="ingreso_de_usuario21" timestamp="2017-03-03T10:18:58" time="8.366" tests="5" failures="0" errors="0" skipped="0">
     <properties>
       <property name="specId" value="b8810705ec8045857ddb4ad4b5b91e21"/>
       <property name="suiteName" value="Ingreso de Usuario21"/>
       <property name="capabilities" value="chrome"/>
     </properties>
-    <testcase classname="chrome.Ingreso de Usuario21" name="ir a la pagina &quot;http://192.168.1.181:9080/Vuelos/&quot;13" time="5.55"/>
-    <testcase classname="chrome.Ingreso de Usuario21" name="ingreso el email &quot;keyjo45@yahoo.es&quot;14" time="2.11"/>
-    <testcase classname="chrome.Ingreso de Usuario21" name="ingreso el password &quot;lazaro86&quot;15" time="1.892"/>
-    <testcase classname="chrome.Ingreso de Usuario21" name="presiono el boton Autenticar16" time="1.693"/>
-    <testcase classname="chrome.Ingreso de Usuario21" name="muestra pagina de bienvenida con el usuario &quot;YOSIMAR ENRIQUE&quot;17" time="1.562"/>
+    <testcase classname="chrome.Ingreso de Usuario21" name="ir a la pagina &quot;http://192.168.1.181:9080/Vuelos/&quot;13" time="9.845"/>
+    <testcase classname="chrome.Ingreso de Usuario21" name="ingreso el email &quot;keyjo45@yahoo.es&quot;14" time="4.979"/>
+    <testcase classname="chrome.Ingreso de Usuario21" name="ingreso el password &quot;lazaro86&quot;15" time="4.649"/>
+    <testcase classname="chrome.Ingreso de Usuario21" name="presiono el boton Autenticar16" time="4.444"/>
+    <testcase classname="chrome.Ingreso de Usuario21" name="muestra pagina de bienvenida con el usuario &quot;YOSIMAR ENRIQUE&quot;17" time="4.282"/>
   </testsuite>
 </testsuites>

@@ -10,6 +10,7 @@ exports.config = {
     coloredLogs: true,
 	waitforTimeout: 10000,
     framework: 'cucumber',
+    services: ['selenium-standalone'],
 	cucumberOpts: {
         require: ['./tests/IngresoTest.js']
     },
