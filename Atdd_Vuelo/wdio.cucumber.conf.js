@@ -12,5 +12,11 @@ exports.config = {
     framework: 'cucumber',
 	cucumberOpts: {
         require: ['./tests/IngresoTest.js']
+    },
+    reporters: ['spec','junit'],
+    reporterOptions: {
+        junit: {
+            outputDir: './reports/'
+        }
     }
 }

@@ -43,5 +43,6 @@ angular.module('vuelos',['LocalStorageModule', 'ui.router', 'ngCookies'])
        
     $rootScope.$on('$stateChangeStart', function () {
     	auth.checkStatus();
+    	
     })
 })
