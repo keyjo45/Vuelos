@@ -4,8 +4,8 @@
   "description": "pruebas de automatizaci�n para tests de aceptaci�n",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js",
-    "test-accept": "wdio wdio.cucumber.conf.js"
+    "test": "node_modules/.bin/wdio wdio.conf.js",
+    "test-accept": "node_modules/.bin/wdio wdio.cucumber.conf.js"
   },
   "author": "Referencia de Raul .A Alzate <raul.alzate@techandsolve.com>",
   "license": "ISC",
