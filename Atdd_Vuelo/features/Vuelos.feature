@@ -2,8 +2,6 @@
 #Keywords Summary :
 #Feature: Ingreso de Usuario.
 #Ingreso de Usuario
-
-
 @tag
 Feature: Ingreso de Usuario
   Quiero ingresar al aplicativo Vuelos a traves de un usuario y contraseña
@@ -17,5 +15,5 @@ Feature: Ingreso de Usuario
     Then muestra pagina de bienvenida con el usuario <usuario>
 
     Examples: 
-    | email              | password   | usuario   																		|
-    | "keyjo45@yahoo.es" | "lazaro86" | "YOSIMAR ENRIQUE" |         
+      | email              | password   | usuario           |
+      | "keyjo45@yahoo.es" | "lazaro86" | "YOSIMAR ENRIQUE" |
